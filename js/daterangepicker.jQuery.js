@@ -54,8 +54,10 @@ jQuery.fn.daterangepicker = function(settings){
 		dateFormat: 'm/d/yy', // date formatting. Available formats: http://docs.jquery.com/UI/Datepicker/%24.datepicker.formatDate
 		closeOnSelect: true, //if a complete selection is made, close the menu
 		arrows: false,
-		posX: rangeInput.offset().left, // x position
-		posY: rangeInput.offset().top + rangeInput.outerHeight(), // y position
+		posLeft: rangeInput.offset().left, // x position
+		posTop: rangeInput.offset().top + rangeInput.outerHeight(), // y position
+		posRight: '',
+		posBottom: '',
 		appendTo: 'body',
 		onClose: function(){},
 		onOpen: function(){},
@@ -283,11 +285,17 @@ jQuery.fn.daterangepicker = function(settings){
 	
 	//wrap and position
 	rp.wrap('<div class="ui-daterangepickercontain"></div>');
-	if(options.posX){
-		rp.parent().css('left', options.posX);
+	if(options.posLeft){
+		rp.parent().css('left', options.posLeft);
 	}
-	if(options.posY){
-		rp.parent().css('top', options.posY);
+	if(options.posTop){
+		rp.parent().css('top', options.posTop);
+	}
+	if (options.posRight) {
+		rp.parent().css('right', options.posRight);
+	}
+	if (options.posBottom) {
+		rp.parent().css('bottom', options.posBottom);
 	}
 
 	//add arrows (only available on one input)
